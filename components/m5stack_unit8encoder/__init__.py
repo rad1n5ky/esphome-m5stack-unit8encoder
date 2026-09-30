@@ -5,7 +5,7 @@ from esphome.components import i2c
 from esphome.const import CONF_ID
 
 CODEOWNERS = ["@nonik0"]
-DEPENDENCIES = ["binary_sensor", "light", "i2c"]
+DEPENDENCIES = ["binary_sensor", "light", "i2c", "switch"]
 AUTO_LOAD = ["binary_sensor", "light"]
 MULTI_CONF = True
 
