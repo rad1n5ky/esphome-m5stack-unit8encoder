@@ -7,7 +7,7 @@ namespace m5stack_unit8encoder {
 static const char *TAG = "m5stack_unit8encoder";
 
 void M5StackUnit8Encoder::setup() {
-    delay(500)
+    delay(500);
     ESP_LOGI(TAG, "Setting up M5Stack Unit8Encoder at address 0x%02x...", this->address_);
 
     this->read_register(FIRMWARE_VERSION_REG, &this->firmwareVersion, 1);
