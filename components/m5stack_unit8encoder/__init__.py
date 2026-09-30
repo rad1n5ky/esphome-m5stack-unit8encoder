@@ -4,9 +4,9 @@ import esphome.config_validation as cv
 from esphome.components import i2c
 from esphome.const import CONF_ID
 
-CODEOWNERS = ["@nonik0"]
+CODEOWNERS = ["rad1n5ky"]
 DEPENDENCIES = ["binary_sensor", "light", "i2c", "switch"]
-AUTO_LOAD = ["binary_sensor", "light"]
+AUTO_LOAD = []
 MULTI_CONF = True
 
 m5stack_unit8encoder_ns = cg.esphome_ns.namespace("m5stack_unit8encoder")
