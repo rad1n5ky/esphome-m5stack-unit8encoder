@@ -76,7 +76,7 @@ void M5StackUnit8Encoder::set_encoder_led_state(uint8_t index, light::LightState
         return;
 
     float red, green, blue;
-    state->current_values_as_rgb(&red, &green, &blue, false);
+    state->current_values_as_rgb(&red, &green, &blue);
 
     auto to_uint8 = [](float c) -> uint8_t {
         c = std::max(0.0f, std::min(1.0f, c));  // clamp to [0.0, 1.0]
