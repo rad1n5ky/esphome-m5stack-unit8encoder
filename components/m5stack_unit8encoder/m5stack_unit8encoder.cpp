@@ -125,6 +125,7 @@ bool M5StackUnit8Encoder::read_encoder_deltas() {
 
     bool update = false;
     for (int i = 0; i < ENCODER_COUNT; i++) {
+        uint8_t valueBytes[4];
         uint8_t reg = INCREMENT_REG + i * 4;
         this->write(&reg, 1);
         this->read(valueBytes, 4)
