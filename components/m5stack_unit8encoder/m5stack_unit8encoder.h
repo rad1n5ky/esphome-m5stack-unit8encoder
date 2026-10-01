@@ -6,7 +6,6 @@
 #include "esphome/components/binary_sensor/binary_sensor.h"
 #include "esphome/components/light/light_output.h"
 #include "esphome/components/sensor/sensor.h"
-#include "esphome/components/switch/switch.h"
 #include "esphome/components/i2c/i2c.h"
 
 #ifndef _BV
