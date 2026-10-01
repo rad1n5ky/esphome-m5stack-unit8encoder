@@ -10,7 +10,8 @@ void M5StackUnit8Encoder::setup() {
     delay(500);
     ESP_LOGI(TAG, "Setting up M5Stack Unit8Encoder at address 0x%02x...", this->address_);
 
-    this->write_byte(FIRMWARE_VERSION_REG);
+    uint8_t reg = FIRMWARE_VERSION_REG;
+    this->write(&reg, 1);
     this->read(&this->firmwareVersion, 1);
     ESP_LOGI(TAG, "M5Stack Unit8Encoder firmware version %d", this->firmwareVersion);
 
@@ -110,7 +111,8 @@ bool M5StackUnit8Encoder::read_buttons() {
 
     bool update = false;
     for (int i = 0; i < ENCODER_COUNT; i++) {
-        this->write_byte(BUTTON_REG + i);
+        uint8_t reg = BUTTON_REG + i;
+        this->write(&reg, 1);
         this->read(&buttonStates[i], 1);
         update |= lastButtonStates[i] != buttonStates[i];
     }
@@ -123,9 +125,9 @@ bool M5StackUnit8Encoder::read_encoder_deltas() {
 
     bool update = false;
     for (int i = 0; i < ENCODER_COUNT; i++) {
-        uint8_t valueBytes[4];
-        this->write_byte(INCREMENT_REG + i * 4);
-        this->read(valueBytes, 4);
+        uint8_t reg = INCREMENT_REG + i * 4;
+        this->write(&reg, 1);
+        this->read(valueBytes, 4)
         encDeltaStates[i] =
             valueBytes[0] | (valueBytes[1] << 8) | (valueBytes[2] << 16) | (valueBytes[3] << 24);
         update |= lastEncDeltaStates[i] != encDeltaStates[i];
@@ -137,7 +139,8 @@ bool M5StackUnit8Encoder::read_encoder_deltas() {
 bool M5StackUnit8Encoder::read_switch() {
     lastSwitchState = switchState;
 
-    this->write_byte(SWITCH_REG);
+    uint8_t reg = SWITCH_REG;
+    this->write(&reg, 1);
     this->read(&switchState, 1);
 
     return lastSwitchState != switchState;
